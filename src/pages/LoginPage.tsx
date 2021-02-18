@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Copyright} from "../components/Copyright";
 import {useForm} from "react-hook-form";
+import {useHttp} from "../hooks/useHttp";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +45,10 @@ type FormData = {
 export default function LoginPage() {
     const classes = useStyles();
     const { register, handleSubmit } = useForm<FormData>();
-    const onSubmit = (data: any) => console.log(data);
+    const {loading, request} = useHttp()
+    const onSubmit = (data: any) => {
+        request(....)
+    }
 
     const handleChange = (e: any) => {
         console.log(e.target.value)
