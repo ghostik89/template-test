@@ -1,15 +1,21 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './pages/LoginPage';
+import {
+    BrowserRouter as Router
+} from "react-router-dom"
 import { CookiesProvider } from 'react-cookie';
+import {useRoutes} from "./hooks/useRoutes";
 
 
 function App() {
-  return (
-      <CookiesProvider>
-        <LoginPage/>
-      </CookiesProvider>
-  );
+    const routes = useRoutes()
+    return (
+        <Router>
+            <CookiesProvider>
+                {routes}
+            </CookiesProvider>
+        </Router>
+    );
 }
 
 export default App;

@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import UserMob from "./store/UserMob";
+import { UserProvider } from './context/userContext';
+
+const user = new UserMob()
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <UserProvider value={user}>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </UserProvider>,
   document.getElementById('root')
 );
 

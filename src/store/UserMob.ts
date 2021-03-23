@@ -1,4 +1,4 @@
-import {observable} from "mobx";
+import {action, observable} from "mobx";
 type UserType = {
     id: number,
     name: string,
@@ -10,6 +10,11 @@ class UserMob{
         id: -1,
         name:'',
         token:''
+    }
+
+    @action
+    updateUser = (user:UserType) => {
+        this.user = user
     }
 }
 

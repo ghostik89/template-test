@@ -13,6 +13,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {Copyright} from "../components/Copyright";
 import {useForm} from "react-hook-form";
+import {useCookies} from "react-cookie";
+import {useUser} from "../context/userContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -44,10 +46,12 @@ type FormData = {
 export default function LoginPage() {
     const classes = useStyles();
     const { register, handleSubmit } = useForm<FormData>();
-    const onSubmit = (data: any) => console.log(data);
+    const [_, setCookie] = useCookies(['user']);
+    const user = useUser()
 
-    const handleChange = (e: any) => {
-        console.log(e.target.value)
+    const onSubmit = (data: any) =>{
+        setCookie('user', JSON.stringify(data))
+        user.updateUser({id: 1, name: data.email, token: data.password})
     }
 
     return (
@@ -60,7 +64,7 @@ export default function LoginPage() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form} noValidate onChange={handleChange} onSubmit={handleSubmit(onSubmit)}>
+                <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)}>
                     <TextField
                         variant="outlined"
                         margin="normal"
