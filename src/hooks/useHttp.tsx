@@ -5,7 +5,7 @@ export const useHttp = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    const request = useCallback( async (url, method, body, token) => {
+    const request = useCallback( async (url, method, body=null, token=null) => {
         setLoading(true)
         try{
             let headers:any = {}
