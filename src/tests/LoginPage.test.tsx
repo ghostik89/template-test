@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {HomePage} from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
 
-describe('App', () => {
-    test('renders App component', () => {
-        render(<HomePage/>);
+
+
+describe('Login page', () => {
+    test('check header', () => {
+        render(<LoginPage/>);
         // succeeds
-        expect(screen.getByText(/some/)).toBeInTheDocument();
+        expect(screen.getByText('Sign In')).toBeInTheDocument();
     });
 });
