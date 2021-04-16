@@ -3,7 +3,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
 const todoInitState: TodoState = {
-    todo: [],
+    todo: [{
+        id:1,
+        title: "MyTodo",
+        userId: 1239,
+        completed: false
+    }],
+    selectedTodo: null,
+    counter: 0,
     requestStatus: {
         status: "idle",
         error: null

@@ -10,5 +10,7 @@ export type ToDoType = {
 
 export type TodoState = {
     todo: ToDoType[],
+    selectedTodo: string | null,
+    counter: number,
     requestStatus: RequestStatusType
 }
